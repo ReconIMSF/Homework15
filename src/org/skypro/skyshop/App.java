@@ -2,6 +2,7 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.product.SimpleProduct;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -11,12 +12,12 @@ public class App {
         ProductBasket productBasket = new ProductBasket(5); //объявляем первую корзину
         ProductBasket productBasket1 = new ProductBasket(5); // объявляем вторую корзину
         // Набиваем продукты для внесения в корзину
-        Product apple = new Product("Яблоко",50);
-        Product sushi = new Product("Суши", 150);
-        Product bread = new Product("Хлеб", 75);
-        Product zukkini = new Product("Кабачок", 80);
-        Product cola = new Product("Кола", 110);
-        Product mushrooms = new Product("Грибы", 95);
+        Product apple = new SimpleProduct("Яблоко", 50);
+        Product sushi = new SimpleProduct("Суши", 150);
+        Product bread = new SimpleProduct("Хлеб", 75);
+        Product zukkini = new SimpleProduct("Кабачок", 80);
+        Product cola = new SimpleProduct("Кола", 110);
+        Product mushrooms = new SimpleProduct("Грибы", 95);
 
         // заполняем корзину 1
         System.out.println("Корзина 1");
