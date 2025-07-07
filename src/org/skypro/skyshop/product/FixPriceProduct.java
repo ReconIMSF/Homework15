@@ -1,19 +1,15 @@
 package org.skypro.skyshop.product;
 
-public class SimpleProduct extends Product {
-    private int productPrice;
+public class FixPriceProduct extends Product {
+    private final int PRODUCT_PRICE = 80;
 
-    public SimpleProduct(String productName, int productPrice) {
+    public FixPriceProduct(String productName) {
         super(productName);
-        this.productPrice = productPrice;
     }
 
+    @Override
     public int getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(int productPrice) {
-        this.productPrice = productPrice;
+        return PRODUCT_PRICE;
     }
 
     @Override
@@ -29,15 +25,11 @@ public class SimpleProduct extends Product {
 
     @Override
     public String toString() {
-        return "Продукт " + productName + " стоит " + productPrice;
+        return "Продукт с фиксированной ценой " + productName + " стоит " + getProductPrice();
     }
 
     @Override
     public boolean isSpecial() {
-        return false;
+        return true;
     }
 }
-
-
-
-

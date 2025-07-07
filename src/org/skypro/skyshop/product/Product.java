@@ -2,6 +2,7 @@ package org.skypro.skyshop.product;
 import java.lang.String;
 
 public abstract class Product {
+    public boolean isSpecial;
     protected String productName;
 
     public Product(String productName) { // конструктор для продуктов
@@ -15,4 +16,6 @@ public abstract class Product {
 
     @Override
     public abstract String toString();
+
+    public abstract boolean isSpecial();
 }
