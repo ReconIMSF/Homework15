@@ -1,21 +1,27 @@
 package org.skypro.skyshop.utilities;
 import java.lang.String;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class SearchEngine {
-    private final List<Searchable> searchables = new ArrayList<>();
-    // В случае, когда количество элементов неизвестно заранее, вместо массива лучше использовать коллекцию,
-    // которая может динамически изменять свой размер. Например, можно использовать класс ArrayList, который
-    // реализует интерфейс List и позволяет добавлять элементы без необходимости задавать фиксированную длину.
+    private final Searchable[] searchables;
+    private int size = 0;
 
-    public void add(Searchable searchTerm) {
-        searchables.add(searchTerm);
+    public SearchEngine(int capacity) {
+        searchables = new Searchable[capacity];
     }
 
-    public String[] search(String searchLine) {
-        String[] results = new String[5];
+    public void add(Searchable searchTerm) {
+        if (size < searchables.length) {
+            searchables[size] = searchTerm;
+            size++;
+        } else {
+            // Обработка ситуации, когда массив переполнен
+            System.out.println("Массив переполнен, невозможно добавить элемент.");
+        }
+    }
+
+    public void search(String searchLine) {
+        String results[] = new String[5];
         int count = 0;
         for (Searchable searchable : searchables) {
             if (count == results.length) break;
@@ -26,6 +32,6 @@ public class SearchEngine {
             }
         }
         System.out.println(Arrays.toString(results));
-        return results;
+        return;
     }
 }

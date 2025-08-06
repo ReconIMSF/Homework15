@@ -1,5 +1,7 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.utilities.Searchable;
+
 public class FixPriceProduct extends Product { // товар с фиксированной ценой наследует из класса товаров
     private final int PRODUCT_PRICE = 80; // установление фиксированной цены на товар
 

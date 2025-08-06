@@ -1,5 +1,7 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.utilities.Searchable;
+
 public class DiscountProduct extends Product { // товар со скидкой наследует из класса товаров
     private int basePrice;
     private int discount;
