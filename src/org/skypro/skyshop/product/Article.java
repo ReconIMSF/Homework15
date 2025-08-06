@@ -2,8 +2,8 @@ package org.skypro.skyshop.product;
 import org.skypro.skyshop.utilities.Searchable;
 
 public class Article implements Searchable {
-    public final String articleName;
-    protected String articleText;
+    private final String articleName;
+    private final String articleText;
 
     public Article(String articleName, String articleText) {
         this.articleName = articleName;

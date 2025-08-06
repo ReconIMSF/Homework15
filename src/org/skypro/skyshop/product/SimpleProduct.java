@@ -1,5 +1,7 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.utilities.Searchable;
+
 public class SimpleProduct extends Product { // обычный товар наследует из класса товаров
     private int productPrice;
     private String name;

@@ -8,6 +8,8 @@ import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.utilities.SearchEngine;
 import org.skypro.skyshop.product.Article;
 
+import java.util.Arrays;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class App {
@@ -28,7 +30,7 @@ public class App {
         Article breadArt = new Article("Хлеб", "Хлеб, он всему голова, пшеничный, первый сорт");
 
         // Объявляем поисковой движок и набиваем в него поисковые фразы
-        SearchEngine searchEngine = new SearchEngine();
+        SearchEngine searchEngine = new SearchEngine(10);
         searchEngine.add(apple);
         searchEngine.add(sushi);
         searchEngine.add(bread);
