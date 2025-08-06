@@ -15,7 +15,6 @@ public class SearchEngine {
             searchables[size] = searchTerm;
             size++;
         } else {
-            // Обработка ситуации, когда массив переполнен
             System.out.println("Массив переполнен, невозможно добавить элемент.");
         }
     }
