@@ -20,17 +20,15 @@ public class SearchEngine {
     }
 
     public void search(String searchLine) {
-        String results[] = new String[5];
+        String[] results = new String[5];
         int count = 0;
-        for (Searchable searchable : searchables) {
-            if (count == results.length) break;
-            String searchTerm = searchable.getSearchTerm();
-            if (searchTerm.contains(searchLine)) {
-                results[count] = searchTerm;
-                count++;
+            for (Searchable searchable : searchables) {
+                if (count == results.length) break;
+                String searchTerm = searchable.getSearchTerm();
+                if (searchTerm.contains(searchLine)) {
+                    results[count] = searchTerm;
+                    count++;
+                }
             }
-        }
-        System.out.println(Arrays.toString(results));
-        return;
     }
 }
