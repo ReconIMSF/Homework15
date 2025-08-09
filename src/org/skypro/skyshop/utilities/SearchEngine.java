@@ -19,16 +19,20 @@ public class SearchEngine {
         }
     }
 
-    public void search(String searchLine) {
-        String[] results = new String[5];
+    public Searchable[] search(String searchLine) {
         int count = 0;
-            for (Searchable searchable : searchables) {
-                if (count == results.length) break;
+        Searchable[] results = new Searchable[5];
+        for (Searchable searchable : searchables) {
+            if (count < results.length) {
                 String searchTerm = searchable.getSearchTerm();
                 if (searchTerm.contains(searchLine)) {
-                    results[count] = searchTerm;
+                    results[count] = searchable;
                     count++;
                 }
+            } else {
+                System.out.println("Массив переполнен, невозможно добавить элемент.");
             }
+        }
+        return results;
     }
 }
