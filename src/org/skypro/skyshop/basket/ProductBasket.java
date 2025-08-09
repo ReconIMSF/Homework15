@@ -1,17 +1,16 @@
 package org.skypro.skyshop.basket;
 import java.util.Arrays;
-import java.util.List;
 import java.lang.String;
 
-import org.skypro.skyshop.product.Product; // импорт из пакета
+import org.skypro.skyshop.product.Product; // импорт из пакета товара
 
-public class ProductBasket {
-    private final Product[] products;
+public class ProductBasket { // описание класса корзины для товара в магазине
+    private final Product[] products; // корзина - массив без элементов
     private int size; // количество продуктов в корзине
 
-    public ProductBasket(int basket) {
+    public ProductBasket(int basket) { // метод для объявления корзины
         products = new Product[basket];
-        size = 0;
+        size = 0; // по умолчанию корзина пуста
     }
 
     public void addProduct(Product product) { // добавляем продукты в корзину
@@ -32,17 +31,17 @@ public class ProductBasket {
         return amount;
     }
 
-    public void printBasket() {
+    public void printBasket() { // вывод информации о товарах в корзине
         int specialCount = 0;
         if (size == 0) {
             System.out.println("Корзина пуста!");
         }
-        for (int i = 0; i < products.length; i++) {
-            if (products[i] != null) {
-                System.out.println(products[i].toString());
+        for (Product value : products) { // проверяем, есть ли в лотке в корзине товар
+            if (value != null) {
+                System.out.println(value.toString()); // если да - печатаем
             }
         }
-        for (Product product : products) {
+        for (Product product : products) { // подсчёт специальных товаров
             if (product != null && product.isSpecial()) {
                 specialCount++;
             }
@@ -51,7 +50,7 @@ public class ProductBasket {
         System.out.println("Специальных товаров " + specialCount);
     }
 
-    public boolean checkProduct(String productName) {
+    public boolean checkProduct(String productName) { // проверяем, есть ли в корзине определённый товар
         for (int i = 0; i < products.length; i++) {
             if (products[i] != null && products[i].getProductName().equalsIgnoreCase(productName)) {
                 return true;
@@ -60,7 +59,7 @@ public class ProductBasket {
         return false;
     }
 
-    public void clearBusket() {
+    public void clearBusket() { // очищаем корзину
         Arrays.fill(products, null);
         size = 0;
     }

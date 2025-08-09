@@ -5,6 +5,10 @@ import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.utilities.SearchEngine;
+import org.skypro.skyshop.product.Article;
+
+import java.util.Arrays;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -22,6 +26,21 @@ public class App {
         Product mushrooms = new SimpleProduct("Грибы", 95);
         Product pepsi = new DiscountProduct("Пепси",70, 5);
         Product porridge = new FixPriceProduct("Каша");
+        Article porridgeArt = new Article("Каша", "Каша овсяная, вкусная и полезная");
+        Article breadArt = new Article("Хлеб", "Хлеб, он всему голова, пшеничный, первый сорт");
+
+        // Объявляем поисковой движок и набиваем в него поисковые фразы
+        SearchEngine searchEngine = new SearchEngine(10);
+        searchEngine.add(apple);
+        searchEngine.add(sushi);
+        searchEngine.add(bread);
+        searchEngine.add(zukkini);
+        searchEngine.add(cola);
+        searchEngine.add(mushrooms);
+        searchEngine.add(pepsi);
+        searchEngine.add(porridge);
+        searchEngine.add(porridgeArt);
+        searchEngine.add(breadArt);
 
         System.out.println("Цена продукта " + pepsi.getProductName() + " " + pepsi.getProductPrice());
 
@@ -53,5 +72,12 @@ public class App {
         productBasket1.clearBusket();
         System.out.println("Корзина 2");
         productBasket1.printBasket();
+
+        // проводим поиск, выводим результат
+        searchEngine.search("Хлеб");
+        searchEngine.search("Пепси");
+        searchEngine.search("Каша");
+
+
     }
 }
