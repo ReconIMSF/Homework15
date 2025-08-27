@@ -5,6 +5,7 @@ import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.utilities.BestResultNotFound;
 import org.skypro.skyshop.utilities.SearchEngine;
 import org.skypro.skyshop.product.Article;
 
@@ -18,16 +19,29 @@ public class App {
         ProductBasket productBasket = new ProductBasket(5); //объявляем первую корзину
         ProductBasket productBasket1 = new ProductBasket(5); // объявляем вторую корзину
         // Набиваем продукты для внесения в корзину
+
+        System.out.println("Ввод данных о продуктах и статьях.");
         Product apple = new SimpleProduct("Яблоко", 50);
         Product sushi = new SimpleProduct("Суши", 150);
         Product bread = new SimpleProduct("Хлеб", 75);
         Product zukkini = new SimpleProduct("Кабачок", 80);
         Product cola = new SimpleProduct("Кола", 110);
         Product mushrooms = new SimpleProduct("Грибы", 95);
-        Product pepsi = new DiscountProduct("Пепси",70, 5);
+        Product pepsi = new DiscountProduct("Пепси", 70, 5);
         Product porridge = new FixPriceProduct("Каша");
         Article porridgeArt = new Article("Каша", "Каша овсяная, вкусная и полезная");
         Article breadArt = new Article("Хлеб", "Хлеб, он всему голова, пшеничный, первый сорт");
+        try {
+            DiscountProduct veal = new DiscountProduct("Телятина", 140, 800);
+            SimpleProduct chicken = new SimpleProduct("Курица", 0);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Ошибка ввода информации! Проверьте базу данных!");
+            e.printStackTrace();
+        } finally {
+            System.out.println("Ввод данных завершен.");
+        }
+
+
 
         // Объявляем поисковой движок и набиваем в него поисковые фразы
         SearchEngine searchEngine = new SearchEngine(10);
@@ -41,6 +55,8 @@ public class App {
         searchEngine.add(porridge);
         searchEngine.add(porridgeArt);
         searchEngine.add(breadArt);
+
+
 
         System.out.println("Цена продукта " + pepsi.getProductName() + " " + pepsi.getProductPrice());
 
@@ -77,7 +93,15 @@ public class App {
         searchEngine.search("Хлеб");
         searchEngine.search("Пепси");
         searchEngine.search("Каша");
-
-
+        try {
+            searchEngine.searchString("Яблоко");
+        } catch (BestResultNotFound e) {
+            System.out.println(e);
+        }
+        try {
+            searchEngine.searchString("Ядро");
+        } catch (BestResultNotFound e) {
+            System.out.println(e);
+        }
     }
 }

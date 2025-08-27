@@ -8,6 +8,10 @@ public class DiscountProduct extends Product { // товар со скидкой
 
     public DiscountProduct(String productName, int basePrice, int discount) { // конструктор для товара со скидкой
         super(productName);
+        if (basePrice <= 0 || discount < 0 || discount > 100) {
+            throw new IllegalArgumentException("Цена товара не может быть ниже или равна 0! " +
+                    "Размер скидки не может быть меньше 0% или больше 100%!");
+        }
         this.basePrice = basePrice; // базовая цена
         this.discount = discount; // размер скидки
     }
