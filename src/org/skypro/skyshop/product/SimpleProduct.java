@@ -8,6 +8,9 @@ public class SimpleProduct extends Product { // обычный товар нас
 
     public SimpleProduct(String productName, int productPrice) { // конструктор для обычного товара
         super(productName);
+        if (productPrice <= 0) {
+            throw new IllegalArgumentException("Цена товара не может быть меньше или равна нулю!");
+        }
         this.productPrice = productPrice;
     }
 
