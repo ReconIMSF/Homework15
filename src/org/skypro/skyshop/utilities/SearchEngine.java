@@ -35,4 +35,32 @@ public class SearchEngine {
         }
         return results;
     }
+
+    public Searchable[] searchString(String search) {
+        int size = 0;
+        Searchable[] result = new Searchable[1];
+        for (Searchable searchable : searchables) {
+            if (size < result.length) {
+                String searchLine = searchable.getSearchTerm();
+                int count = 0;
+                int index = 0;
+                int substingIndex = searchLine.indexOf(search, index);
+                while (substingIndex != -1) {
+                    count++;
+                    index = substingIndex + search.length();
+                    substingIndex = searchLine.indexOf(search, index);
+                }
+                if (count > 0) {
+                    result[size] = searchable;
+                    size++;
+                } else if (count <= 0) {
+                    throw new BestResultNotFound(search);
+                } else {
+                    System.out.println("Массив переполнен, невозможно добавить элемент.");
+                }
+            }
+        }
+        System.out.println(Arrays.toString(result));
+        return result;
+    }
 }
